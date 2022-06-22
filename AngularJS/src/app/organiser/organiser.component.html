@@ -1,0 +1,27 @@
+<div class="routes">
+    
+    <nav>
+      <a class="button" routerLink="/home" routerLinkActive="activebutton">Home Page</a>
+      <a class="button" routerLink="/organiser" routerLinkActive="activebutton">Органайзер</a>
+      <a class="button" routerLink="/calculator" routerLinkActive="activebutton">Калькулятор</a>
+      <a class="button" routerLink="/house-kiprey" routerLinkActive="activebutton">Дом Кипрея</a>
+    </nav>
+
+</div>
+
+<div class="container">
+    <header>
+        <app-selector></app-selector>
+        <!-- <h3>{{ title }}</h3> -->
+        <!-- <p>{{ data }}</p> -->
+    </header>
+    
+    <main>
+        <app-calendar></app-calendar>
+    </main>
+
+    <div>
+        <app-organise></app-organise>
+        <!-- <p>{{ nData.newData }}</p> -->
+    </div>
+</div>
