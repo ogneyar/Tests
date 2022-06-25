@@ -1,0 +1,16 @@
+// https://docs.expo.io/build-reference/apk/#managed-projects
+// https://docs.expo.io/build/setup/
+
+npm install -g eas-cli
+
+// Войдите в свою учетную запись Expo.
+eas login
+
+// Вы можете проверить, вошли ли вы в систему, запустив 
+eas whoami
+
+
+// Запустите сборку
+eas build --platform android 
+// а точнее
+eas build -p android --profile preview

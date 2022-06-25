@@ -1,0 +1,10 @@
+
+.NavLink {
+  text-decoration: none;
+  /* color: white; */
+  background: white;
+  padding: 10px;
+  border: 1px solid white;
+  margin: 5px;
+  border-radius: 10px;
+}

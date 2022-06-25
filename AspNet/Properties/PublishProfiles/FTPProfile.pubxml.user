@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Этот файл используется процессом публикации или упаковки вашего веб-проекта. Можно настроить поведение этого процесса,
+изменив этот файл MSBuild. Подробности см. на странице https://go.microsoft.com/fwlink/?LinkID=208121. 
+-->
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <TimeStampOfAssociatedLegacyPublishXmlFile />
+    <EncryptedPassword>AQAAANCMnd8BFdERjHoAwE/Cl+sBAAAADCSKySYZq06iudFU7XP4MgAAAAACAAAAAAAQZgAAAAEAACAAAAAmiLpEEKhfspebRf8VDf78psGOLixin57vfJRmQmO1rAAAAAAOgAAAAAIAACAAAAAtQIFRFzpGtJqHQ5s0Ea+SPb9YsVFhHOBJeIq/PHOtKSAAAABBCBbd8siZ3fpOlSfMZrWef+1/dk8TB5KOfL5cwhkvTUAAAAAnxVlecaR7QsbMIpL9xFPm4I7DOw7AO6WB0xyeQZAvWyTlfrZ1nOCgINdzE2SWhoywcOYKEBSg6gL/ubp+m9ER</EncryptedPassword>
+    <_PublishTargetUrl>ftp://141.8.192.26/domains/pzmarket.ru/public_html</_PublishTargetUrl>
+    <History>False|2021-10-18T13:24:49.8214529Z;False|2021-10-17T09:54:51.3132967+03:00;False|2021-10-17T09:42:53.3672325+03:00;</History>
+  </PropertyGroup>
+  <ItemGroup>
+    <File Include="AspNet.deps.json">
+      <publishTime>10/18/2021 16:24:29</publishTime>
+    </File>
+  </ItemGroup>
+</Project>

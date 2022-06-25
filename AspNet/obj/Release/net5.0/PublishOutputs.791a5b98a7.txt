@@ -1,0 +1,7 @@
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\AspNet.exe
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\appsettings.Development.json
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\appsettings.json
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\AspNet.dll
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\AspNet.deps.json
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\AspNet.runtimeconfig.json
+G:\VSCode\AspNet\obj\Release\net5.0\PubTmp\Out\AspNet.pdb
