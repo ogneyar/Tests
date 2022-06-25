@@ -1,0 +1,48 @@
+﻿@model NewsItemListModel
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.NewsArchive").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-news-list-page");
+}
+<div class="page news-list-page">
+    <div class="bs_title_black title_bg_white bs_text_left bs_margin_b_mid">
+        <a href="@Url.RouteUrl("NewsRSS", new { languageId = Model.WorkingLanguageId })" class="link-rss" title="@T("News.RSS.Hint")">@T("News.RSS")</a>
+        <h4>@T("News")</h4>
+    </div>
+    <div class="page-body">
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageBeforeItems })
+        <div class="news-items bs_news_list">
+            @foreach (var item in Model.NewsItems)
+            {
+                <div class="bs_news_item">
+                    <div class="bs_news_date_day">
+                        <span class="news-date">-@item.CreatedOn.ToString("D")</span>
+                    </div>
+                    <div class="news-head">
+                        <a class="news-title" href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })">@item.Title</a>
+                    </div>
+                    <div class="news-body">
+                        @Html.Raw(item.Short)
+                    </div>
+                    <div class="bs_buttons">
+                        <a href="@Url.RouteUrl("NewsItem", new { SeName = item.SeName })" class="read-more bs_primary_button">@T("News.MoreInfo")</a>
+                    </div>
+                    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageInsideItem, additionalData = item })
+                </div>
+            }
+        </div>
+        @{
+            var pager = Html.Pager(Model.PagingFilteringContext).QueryParam("pagenumber");
+        }
+        @if (!(await pager.IsEmpty()))
+        {
+            <div class="pager">
+                @pager
+            </div>
+        }
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.NewsListPageAfterItems })
+    </div>
+</div>

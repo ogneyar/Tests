@@ -1,0 +1,82 @@
+﻿@model MultiFactorAuthenticationModel
+
+@using Nop.Core
+@using Nop.Services.Customers
+@inject IWorkContext workContext
+@inject ICustomerService customerService
+
+@{
+    var isRegisterCustomer = await customerService.IsRegisteredAsync(await workContext.GetCurrentCustomerAsync());
+    Layout = isRegisterCustomer ? "_ColumnsTwo" : "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.MultiFactorAuthentication").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-account-page");
+}
+
+@if (isRegisterCustomer)
+{
+    @section left
+    {
+        @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.MultiFactorAuthentication })
+    }
+}
+
+<div class="page account-page multi-factor-authentication-page">
+    <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+        @if (isRegisterCustomer)
+        {
+            <h4>@T("Account.MyAccount") - @T("PageTitle.MultiFactorAuthentication")</h4>
+        }
+        else
+        {
+            <h4>@T("PageTitle.MultiFactorAuthentication")</h4>
+        }
+    </div>
+    
+    <div class="page-body">
+        <div class="description">
+            @T("Account.MultiFactorAuthentication.Description")
+        </div>
+        <form asp-route="MultiFactorAuthenticationSettings" method="post">
+            <div class="bs_authentication_enable_main">
+                <div class="title">
+                    <strong>@T("Account.MultiFactorAuthentication.Settings")</strong>
+                </div>
+                <div class="bs_authentication_enable">
+                    @if (!string.IsNullOrEmpty(Model.Message))
+                    {
+                        <div class="message-error">
+                            @Model.Message
+                        </div>
+                    }
+                    <div class="">
+                        <input asp-for="IsEnabled" />
+                        <label asp-for="IsEnabled" ></label>
+                        <span asp-validation-for="IsEnabled"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="title">
+                <strong>@T("Account.MultiFactorAuthentication.Providers")</strong>
+            </div>               
+            <div class="bs_authentication_providers">
+                <div class="section payment-method">
+                    @if (Model.Providers.Count > 0)
+                    {
+                        @await Html.PartialAsync("_MultiFactorAuthenticationProviders", Model.Providers)
+                    }
+                    else
+                    {
+                        @T("Account.MultiFactorAuthentication.Providers.NoActive")
+                    }
+                </div>                
+            </div>
+
+            <div class="buttons bs_authentication_save_btn">
+                <button type="submit" id="save-mfa-settings-button" name="save-mfa-settsing-button" class="bs_secondary_button bs_font_weight_400 save-customer-mfa-button">@T("Common.Save")</button>
+            </div>
+        </form>
+    </div>
+</div>

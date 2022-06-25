@@ -1,0 +1,21 @@
+﻿@model ShoppingCartModel
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.ShoppingCart").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-shopping-cart-page");
+}
+@if (!Model.OnePageCheckoutEnabled)
+{
+    @await Component.InvokeAsync("CheckoutProgress", new {step = CheckoutProgressStep.Cart})
+}
+<div class="page shopping-cart-page">
+    <div class="bs_title_black title_bg_grey">
+        <h3>@T("ShoppingCart")</h3>
+    </div>
+    <div class="bs_shopping_cart_data">
+        @await Component.InvokeAsync("OrderSummary", new { overriddenModel = Model })
+    </div>
+</div>

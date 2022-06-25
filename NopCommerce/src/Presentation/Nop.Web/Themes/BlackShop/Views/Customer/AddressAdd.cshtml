@@ -1,0 +1,32 @@
+﻿@model CustomerAddressEditModel
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Account").Text);
+    Html.AppendPageCssClassParts("html-account-page");
+    //page class
+    Html.AppendPageCssClassParts("html-address-edit-page");
+}
+@section left
+{
+    @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.Addresses })
+}
+<form asp-route="CustomerAddressAdd" method="post">
+    <div class="page account-page address-edit-page">
+        <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+            <h4>@T("Account.MyAccount") - @T("Account.CustomerAddresses.AddNew")</h4>
+        </div>
+        <div class="page-body">
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
+            @{
+                var dataDictAddress = new ViewDataDictionary(ViewData);
+                dataDictAddress.TemplateInfo.HtmlFieldPrefix = "Address";
+                @await Html.PartialAsync("_CreateOrUpdateAddress", Model.Address, dataDictAddress)
+            }
+            <div class="buttons">
+                <button type="submit" class="bs_primary_button save-address-button">@T("Common.Save")</button>
+            </div>
+        </div>
+    </div>
+</form>

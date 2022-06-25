@@ -1,0 +1,183 @@
+﻿@model AddressModel
+
+<input asp-for="Id" type="hidden" />
+<div class="bs_edit_address">
+    <div class="bs_register_box">
+        <div class="bs_required_info">
+            <p>
+                <span class="required">*</span>
+                <span>@T("admin.vendors.vendorattributes.fields.isrequired")</span>
+            </p>
+        </div>
+        <div class="bs_register_form_field">
+            <div class="bs_input_field">
+                <label class="bs_text_label" asp-for="FirstName" asp-postfix=":"></label>
+                <div class="bs_input_area">
+                    <input asp-for="FirstName" placeholder="FirstName" />
+                    <nop-required />
+                </div>
+                <span asp-validation-for="FirstName"></span>
+            </div>
+            <div class="bs_input_field">
+                <label class="bs_text_label" asp-for="LastName" asp-postfix=":"></label>
+                <div class="bs_input_area">
+                    <input asp-for="LastName" placeholder="LastName" />
+                    <nop-required />
+                </div>
+                <span asp-validation-for="LastName"></span>
+            </div>
+            <div class="bs_input_field">
+                <label class="bs_text_label" asp-for="Email" asp-postfix=":"></label>
+                <div class="bs_input_area">
+                    <input asp-for="Email" placeholder="Email" />
+                    <nop-required />
+                </div>
+                <span asp-validation-for="Email"></span>
+            </div>
+            @if (Model.CompanyEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="Company" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="Company" placeholder="Company" />
+                        @if (Model.CompanyRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="Company"></span>
+                </div>
+            }
+            @if (Model.CountryEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="CountryId" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <select asp-for="CountryId" asp-items="Model.AvailableCountries"
+                                data-trigger="country-select"
+                                data-url="@(Url.RouteUrl("GetStatesByCountryId"))"
+                                data-stateprovince="#@Html.IdFor(model => model.StateProvinceId)"
+                                data-loading="#states-loading-progress"></select>
+                        <nop-required />
+
+                    </div>
+                    <span asp-validation-for="CountryId"></span>
+                </div>
+            }
+            @if (Model.CountryEnabled && Model.StateProvinceEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="StateProvinceId" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <select asp-for="StateProvinceId" asp-items="Model.AvailableStates"></select>
+                    </div>
+                    <span id="states-loading-progress" style="display: none;" class="please-wait">@T("Common.Wait...")</span>
+                    <span asp-validation-for="StateProvinceId"></span>
+                </div>
+            }
+            @if (Model.CountyEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="County" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="County" placeholder="County" />
+                        @if (Model.CountyRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="County"></span>
+                </div>
+            }
+            @if (Model.CityEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="City" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="City" placeholder="City" />
+                        @if (Model.CityRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="City"></span>
+                </div>
+            }
+            @if (Model.StreetAddressEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="Address1" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="Address1" placeholder="Address1" />
+                        @if (Model.StreetAddressRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="Address1"></span>
+                </div>
+            }
+            @if (Model.StreetAddress2Enabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="Address2" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="Address2" placeholder="Address2" />
+                        @if (Model.StreetAddress2Required)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="Address2"></span>
+                </div>
+            }
+            @if (Model.ZipPostalCodeEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="ZipPostalCode" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="ZipPostalCode" placeholder="ZipPostalCode" />
+                        @if (Model.ZipPostalCodeRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="ZipPostalCode"></span>
+                </div>
+            }
+            @if (Model.PhoneEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="PhoneNumber" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="PhoneNumber" placeholder="PhoneNumber" />
+                        @if (Model.PhoneRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="PhoneNumber"></span>
+                </div>
+            }
+            @if (Model.FaxEnabled)
+            {
+                <div class="bs_input_field">
+                    <label class="bs_text_label" asp-for="FaxNumber" asp-postfix=":"></label>
+                    <div class="bs_input_area">
+                        <input asp-for="FaxNumber" placeholder="Fax" />
+                        @if (Model.FaxRequired)
+                        {
+                            <nop-required />
+                        }
+                    </div>
+                    <span asp-validation-for="FaxNumber"></span>
+                </div>
+            }
+            @if (Model.CustomAddressAttributes.Count > 0)
+            {
+                @await Html.PartialAsync("_AddressAttributes", Model.CustomAddressAttributes)
+            }
+        </div>
+    </div>
+
+</div>

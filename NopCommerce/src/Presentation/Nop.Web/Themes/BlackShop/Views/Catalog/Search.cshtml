@@ -1,0 +1,137 @@
+﻿@model Nop.Web.Models.Catalog.SearchModel
+@{
+    Layout = "_ColumnsTwo";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.Search").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-search-page");
+}
+<script asp-location="Footer">
+    $(document).ready(function () {
+        $("#@Html.IdFor(model => model.advs)").on('click', toggleAdvancedSearch);
+        toggleAdvancedSearch();
+    });
+
+    function toggleAdvancedSearch() {
+        if ($('#@Html.IdFor(model => model.advs)').is(':checked')) {
+            $('#advanced-search-block').show();
+        }
+        else {
+            $('#advanced-search-block').hide();
+        }
+    }
+</script>
+
+@section CatalogFilters {
+    @await Html.PartialAsync("_CatalogFilters", Model.CatalogProductsModel)
+}
+
+<div class="page search-page">
+    <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+        <h4>@T("Search")</h4>
+    </div>
+    <div class="page-body">
+        <div class="bs_serach_box">
+            <div class="bs_search_icon">
+                <span class="linearicons-magnifier"></span>
+            </div>
+            <div class="search-input bs_search_input_box">
+                <form asp-route="ProductSearch" method="get">
+                    <div class="">
+                        <div class="">
+                            <div class="basic-search">
+                                <div class="bs_input_field">
+                                    <label class="bs_text_label" asp-for="q">@T("Search.SearchTerm")</label>
+                                    <div class="bs_input_area">
+                                        <input asp-for="q" placeholder="@T("Search.SearchTerm")" class="search-text" />
+                                    </div>
+                                </div>
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageBasic })
+                                <div class="bs_input_field reversed">
+                                    <input asp-for="advs" />
+                                    <label asp-for="advs">@T("Search.AdvancedSearch")</label>
+                                </div>
+                            </div>
+                            <div class="advanced-search" id="advanced-search-block">
+                                @if (Model.AvailableCategories.Count > 0)
+                                {
+                                    <div class="bs_input_field">
+                                        <label class="bs_text_label" asp-for="cid">@T("Search.Category")</label>
+                                        <div class="bs_input_area">
+                                            <select asp-for="cid" asp-items="Model.AvailableCategories"></select>
+                                        </div>
+                                    </div>
+                                    <div class="bs_input_field reversed">
+                                        <input asp-for="isc" />
+                                        <label asp-for="isc">@T("Search.IncludeSubCategories")</label>
+                                    </div>
+                                }
+                                @if (Model.AvailableManufacturers.Count > 0)
+                                {
+                                    <div class="bs_input_field">
+                                        <label class="bs_text_label" asp-for="mid">@T("Search.Manufacturer")</label>
+                                        <div class="bs_input_area">
+                                            <select asp-for="mid" asp-items="Model.AvailableManufacturers"></select>
+                                        </div>
+                                    </div>
+                                }
+                                @if (Model.asv && Model.AvailableVendors.Count > 0)
+                                {
+                                    <div class="bs_input_field">
+                                        <label class="bs_text_label" asp-for="vid">@T("Search.Vendor")</label>
+                                        <div class="bs_input_area">
+                                            <select asp-for="vid" asp-items="Model.AvailableVendors"></select>
+                                        </div>
+                                    </div>
+                                }                                
+                                <div class="bs_input_field reversed">
+                                    <input asp-for="sid" />
+                                    <label asp-for="sid">@T("Search.SearchInDescriptions")</label>
+                                </div>
+                                @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageAdvanced })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="buttons">
+                        <button type="submit" class="bs_secondary_button search-button" value="@T("Search.Button")">
+                            <span class="linearicons-magnifier"> </span>
+                            @T("Search.Button")
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        
+        @await Html.PartialAsync("_CatalogSelectors", Model.CatalogProductsModel)
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageBeforeResults })
+        <div class="search-results">
+            @{
+                var catalogProductsViewData = new ViewDataDictionary(ViewData);
+                catalogProductsViewData["fetchUrl"] = Html.Raw(Url.Action("SearchProducts", "Catalog"));
+            }
+            @await Html.PartialAsync("_CatalogProducts", Model.CatalogProductsModel, catalogProductsViewData)
+            <script asp-location="Footer">
+                $(document).ready(function () {
+                    $(CatalogProducts).on('before', function (e) {
+                        var isAdvanced = $('#@Html.IdFor(model => model.advs)').is(':checked');
+
+                        e.payload.urlBuilder
+                            .addParameter('q', $('#@Html.IdFor(model => model.q)').val())
+                            .addParameter('advs', isAdvanced);
+
+                        if (isAdvanced) {
+                            e.payload.urlBuilder
+                                .addParameter('cid', $('#@Html.IdFor(model => model.cid)').val())
+                                .addParameter('isc', $('#@Html.IdFor(model => model.isc)').is(':checked'))
+                                .addParameter('mid', $('#@Html.IdFor(model => model.mid)').val())
+                                .addParameter('vid', $('#@Html.IdFor(model => model.vid)').val())
+                                .addParameter('sid', $('#@Html.IdFor(model => model.sid)').is(':checked'));
+                        }
+                    });
+                });
+            </script>
+        </div>
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ProductSearchPageAfterResults })
+    </div>
+</div>

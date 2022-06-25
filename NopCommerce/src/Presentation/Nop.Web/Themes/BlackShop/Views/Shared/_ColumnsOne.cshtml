@@ -1,0 +1,28 @@
+﻿@{
+    Layout = "_Root";
+}
+@if (IsSectionDefined("Breadcrumb"))
+{
+    @section Breadcrumb {
+        @await RenderSectionAsync("Breadcrumb")
+    }
+}
+@if (IsSectionDefined("Related_Products"))
+{
+    @section Related_Products {
+        @await RenderSectionAsync("Related_Products")
+    }
+}
+@if (IsSectionDefined("Theme_homepage_slider"))
+{
+    @section Theme_homepage_slider {
+        @await RenderSectionAsync("Theme_homepage_slider")
+    }
+}
+
+
+<div class="center-1">
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnBefore })
+    @RenderBody()
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.MainColumnAfter })
+</div>

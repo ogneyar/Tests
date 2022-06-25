@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Language Name="English">
+    <LocaleResource Name="search.searchbox.text.label">
+        <Value>Search in Black Shop...</Value>
+    </LocaleResource>
+    <LocaleResource Name="Newsletter.Title">
+        <Value>Join Us</Value>
+    </LocaleResource>
+    <LocaleResource Name="Wishlist.HeaderQuantity">
+        <Value>{0}</Value>
+    </LocaleResource>
+    <LocaleResource Name="ShoppingCart.HeaderQuantity">
+        <Value>{0}</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.Cart">
+        <Value>Clear Cart</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.register.info">
+        <Value>If you have already registered to our website, you can login.</Value>
+    </LocaleResource>
+    <LocaleResource Name="admin.vendors.vendorattributes.fields.isrequired">
+        <Value>Required fields</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.title.recommended.products">
+        <Value>Recommended Products</Value>
+    </LocaleResource>
+    <LocaleResource Name="theme.blackshop.clear.cartitem.confirmation.title">
+        <Value>Delete this Cart item?</Value>
+    </LocaleResource>
+    <LocaleResource Name="theme.blackshop.clear.cartitem.confirmation.description">
+        <Value>Are you sure want to remove this item from cart?</Value>
+    </LocaleResource> 
+    <LocaleResource Name="Theme.BlackShop.Clear.Cart.confirmation.title">
+        <Value>Delete all Cart items?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.Cart.confirmation.Description">
+        <Value>Are you sure want to remove all items from cart?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.Cart.confirmation.Confirmbuttontext">
+        <Value>Yes, Delete it!</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.wishlistitem.confirmation.title">
+        <Value>Delete this Wishlist item?</Value>
+    </LocaleResource>
+    <LocaleResource Name="theme.blackshop.clear.wishlist.confirmation.description">
+        <Value>Are you sure want to remove this item from Wishlist?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.wishlist.confirmation.title">
+        <Value>Delete all Wishlist items?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.wishlistall.confirmation.Description">
+        <Value>Are you sure want to remove all items from Wishlist?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.move.wishlistitemtocart.confirmation.title">
+        <Value>Add To Cart this item?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.move.wishitemtocart.confirmation.Description">
+        <Value>Are you sure want to add to cart this item from Wishlist?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.move.wishlisttocart.confirmation.title">
+        <Value>Add To Cart all items?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.move.allwishlist.confirmation.Description">
+        <Value>Are you sure want to add to cart this all items from Wishlist?</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.Clear.wishlist">
+        <Value>Clear Wishlist</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.BlackShop.move.itemtocart.confirmation.Confirmbuttontext">
+        <Value>Yes, Move it!</Value>
+    </LocaleResource>
+    <LocaleResource Name="Theme.Blackshop.allShoppingCart.AddToCart">
+        <Value>Add to Cart all items</Value>
+    </LocaleResource>
+
+</Language>

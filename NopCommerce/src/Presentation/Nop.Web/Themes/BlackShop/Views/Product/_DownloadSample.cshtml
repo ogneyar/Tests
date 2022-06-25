@@ -1,0 +1,11 @@
+﻿@model ProductDetailsModel
+@if (Model.HasSampleDownload)
+{
+     <div class="download-sample">
+        <span class="linearicons-download"></span>
+        <a class=" bsdownload-sample-button" href="@Url.RouteUrl("GetSampleDownload", new { productid = Model.Id })">
+
+            @T("Products.DownloadSample")
+        </a>
+     </div>
+}

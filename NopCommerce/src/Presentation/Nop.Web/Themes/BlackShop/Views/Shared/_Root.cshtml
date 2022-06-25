@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_Root.Head";
+}
+@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BodyStartHtmlTagAfter })
+@await Html.PartialAsync("_Notifications")
+@await Html.PartialAsync("_JavaScriptDisabledWarning")
+@await Html.PartialAsync("_OldInternetExplorerWarning")
+<div class="master-wrapper-page">
+    @await Component.InvokeAsync("AdminHeaderLinks")
+    @await Html.PartialAsync("_Header")
+    <script asp-location="Footer">
+        var localized_data = {
+            AjaxCartFailure: "@T("AjaxCart.Failure")"
+        };
+        AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart', localized_data);
+    </script>
+    @if (IsSectionDefined("Theme_homepage_slider"))
+    {
+        @RenderSection("Theme_homepage_slider")
+    }
+
+    @if (IsSectionDefined("Breadcrumb"))
+    {
+        @RenderSection("Breadcrumb")
+    }   
+    <div class="master-wrapper-content">
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentBefore })
+
+
+        <div class="master-column-wrapper">
+            @RenderBody()
+        </div>
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContentAfter })
+    </div>
+    @if (IsSectionDefined("Related_Products"))
+    {
+        @RenderSection("Related_Products")
+    }
+    @await Component.InvokeAsync("Footer")
+</div>
+@await Component.InvokeAsync("EuCookieLaw")
+@await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.BodyEndHtmlTagBefore })

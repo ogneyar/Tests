@@ -1,0 +1,87 @@
+﻿@model ContactVendorModel
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.ContactVendor", Model.VendorName).Text);
+    //page class
+    Html.AppendPageCssClassParts("html-contact-page");
+}
+<div class="page contact-page">
+    <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+        <h4>@T("PageTitle.ContactVendor", Model.VendorName)</h4>
+    </div>
+    <div class="page-body">
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContactVendorTop })
+        @if (Model.SuccessfullySent)
+        {
+            <div class="result">
+                @Model.Result
+            </div>
+        }
+        else
+        {
+            <div class="bs_email_box">
+                <div class="bs_email_icon">
+                    <span class="linearicons-at-sign"></span>
+                </div>
+                <div class="bs_email_input_box">
+                    <form asp-route="ContactVendor" method="post">
+                        <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                        <div class="bs_email_inputs">
+                                <div class="bs_input_field">
+                                    <label class="bs_text_label" asp-for="FullName"></label>
+                                    <div class="bs_input_area">
+                                        <input asp-for="FullName" placeholder="@T("ContactVendor.FullName.Hint")" class="fullname" />
+                                        <nop-required />
+                                    </div>
+                                    <span asp-validation-for="FullName"></span>
+                                </div>
+
+                                <div class="bs_input_field">
+                                    <label class="bs_text_label" asp-for="Email"></label>
+                                    <div class="bs_input_area">
+                                        <input asp-for="Email" placeholder="@T("ContactVendor.Email.Hint")" class="email" />
+                                        <nop-required />
+                                    </div>
+                                    <span asp-validation-for="Email"></span>
+                                </div>
+
+                                @if (Model.SubjectEnabled)
+                                {
+                                    <div class="bs_input_field">
+                                        <label class="bs_text_label" asp-for="Subject"></label>
+                                        <div class="bs_input_area">
+                                            <input asp-for="Subject" placeholder="@T("ContactVendor.Subject.Hint")" class="subject" />
+                                            <nop-required />
+                                        </div>
+                                        <span asp-validation-for="Subject"></span>
+                                    </div>
+                                }
+                                <div class="bs_input_field">
+                                    <label class="bs_text_label" asp-for="Enquiry"></label>
+                                    <div class="bs_input_area">
+                                        <textarea asp-for="Enquiry" placeholder="@T("ContactVendor.Enquiry.Hint")" class="enquiry"></textarea>
+                                        <nop-required />
+                                    </div>
+                                    <span asp-validation-for="Enquiry"></span>
+                                </div>
+                                @if (Model.DisplayCaptcha)
+                                {
+                                    <nop-captcha />
+                                }
+                        </div>
+                        <div class="buttons">
+                            <button type="submit" name="send-email" class="bs_secondary_button contact-us-button" value="@T("ContactVendor.Button")">
+                                <span class="linearicons-envelope">
+                                </span>
+                                @T("ContactVendor.Button")
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        }
+        @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.ContactVendorBottom })
+    </div>
+</div>

@@ -1,0 +1,76 @@
+﻿<div class="header">
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderBefore })
+    <div class="header-upper">
+        <div class="header-selectors-wrapper">
+            @await Component.InvokeAsync("TaxTypeSelector")
+            @await Component.InvokeAsync("CurrencySelector")
+            @await Component.InvokeAsync("LanguageSelector")
+            @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderSelectors })
+        </div>
+        <div class="header-links-wrapper">
+            @await Component.InvokeAsync("HeaderLinks")
+            @await Component.InvokeAsync("FlyoutShoppingCart")
+        </div>
+    </div>
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderMiddle })
+    <div class="header-lower">
+        <div class="header-logo">
+            @await Component.InvokeAsync("Logo")
+        </div>
+        <div class="header-menu">
+            <div class="linearicons-menu" style="cursor:pointer" onclick="openNav()"></div>
+            @await Component.InvokeAsync("TopMenu")
+        </div>
+        <div class="search-box store-search-box">            
+            @await Component.InvokeAsync("SearchBox")                    
+        </div>
+    </div>
+    @await Component.InvokeAsync("Widget", new { widgetZone = PublicWidgetZones.HeaderAfter })
+</div>
+
+<script asp-location="Footer">
+
+    $(".search-box-button-1").click(function () {
+        $('.header-lower').addClass('bs_search_back');
+        $('.bs_search_bar').addClass('search-open');
+        if ($('.bs_search_bar').hasClass('search-open')) {
+            $('.bs_search_bar.search-open').show();
+            $("input[type='text']").focus();
+            $('.bs_search_bar.search-open').css('opacity', 1);
+        } else {
+            // $('.bs_search_bar').hide();
+            $('.bs_search_bar').css('opacity', 0);
+        }
+        if ($(this).hasClass('s-open')) {
+            $('.bs_search_bar').removeClass('search-open');
+            $('.header-lower').removeClass('bs_search_back');
+            // $('.bs_search_bar').hide();
+            $('.bs_search_bar').css('opacity', 0);
+            $(this).addClass('s-close');
+            $(this).removeClass('s-open');
+        }
+        else {
+            $(this).addClass('s-open');
+            $(this).removeClass('s-close');
+        }
+    });
+
+
+    $(document).on('keydown', function (e) {
+        if (e.keyCode === 27) {
+            $('.search-open').css('opacity', 0);
+            $('.bs_search_bar').removeClass('search-open');
+            $('.header-lower').removeClass('bs_search_back');
+            // $('.bs_search_bar').hide();
+            $('.search-box-button-1').removeClass('s-open');
+            $('.search-box-button-1').addClass('s-close');
+        }
+    });
+
+
+
+
+
+
+</script>
+

@@ -1,0 +1,82 @@
+﻿@model CheckGiftCardBalanceModel
+
+@using Nop.Core
+@using Nop.Services.Customers
+@using Nop.Web.Framework.UI;
+@inject IWorkContext workContext
+@inject ICustomerService customerService
+
+@{
+    var isRegisterCustomer = await customerService.IsRegisteredAsync(await workContext.GetCurrentCustomerAsync());
+    Layout = isRegisterCustomer ? "_ColumnsTwo" : "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.CheckGiftCardBalance").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-account-page");
+}
+
+@if (isRegisterCustomer)
+{
+    @section left
+    {
+        @await Component.InvokeAsync("CustomerNavigation", new { selectedTabId = CustomerNavigationEnum.CheckGiftCardBalance })
+    }
+}
+
+
+<div class="page account-page check-gift-card-balance-page">
+    <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+        @if (isRegisterCustomer)
+        {
+            <h4>@T("Account.MyAccount") - @T("PageTitle.CheckGiftCardBalance")</h4>
+        }
+        else
+        {
+            <h4>@T("PageTitle.CheckGiftCardBalance")</h4>
+        }
+    </div>
+    
+    <div class="page-body">
+        @if (!string.IsNullOrEmpty(Model.Message))
+        {
+            <div class="message-error">
+                @Model.Message
+            </div>
+        }
+        @if (!string.IsNullOrEmpty(Model.Result))
+        {
+            <div class="result">
+                @string.Format(T("ShoppingCart.Totals.GiftCardInfo.Remaining").Text, @Model.Result)
+            </div>
+        }
+        <form asp-controller="Customer" asp-action="CheckGiftCardBalance" method="post">
+            <div class="bs_giftcard_info">
+            <div asp-validation-summary="ModelOnly" class="message-error"></div>
+                
+                    <div class="bs_input_field">
+                        <label class="bs_text_label" asp-for="GiftCardCode"></label>
+                        <div class="bs_input_area">
+                            <input asp-for="GiftCardCode" placeholder="@T("ShoppingCart.GiftCardCouponCode.Tooltip")" class="fullname" />
+                            <nop-required />
+                        </div>                        
+                        <span asp-validation-for="GiftCardCode"></span>
+                    </div>
+                    <nop-captcha />
+                    <div class="buttons">
+                        <button type="submit" name="checkbalancegiftcard" id="checkbalancegiftcard" class="bs_primary_button check-gift-card-balance-button">@T("CheckGiftCard.GiftCardCouponCode.Button")</button>
+                        <script asp-location="Footer">
+                            $(document).ready(function () {
+                                $('#giftcardcouponcode').keydown(function (event) {
+                                    if (event.keyCode == 13) {
+                                        $('#checkbalancegiftcard').click();
+                                        return false;
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>               
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,22 @@
+﻿@model AccountActivationModel
+@{
+    Layout = "_ColumnsOne";
+
+    //title
+    Html.AddTitleParts(T("PageTitle.AccountActivation").Text);
+    //page class
+    Html.AppendPageCssClassParts("html-account-activation-page");
+}
+<div class="page account-activation-page">
+    <div class="bs_title_black title_bg_white bs_text_center bs_margin_b_mid">
+        <h4>@T("Account.AccountActivation")</h4>
+    </div>   
+    <div class="page-body">
+        <div class="result">
+            @Model.Result
+        </div>
+        <div class="buttons">
+            <a href="@Model.ReturnUrl" class="bs_primary_button">@T("Common.Continue")</a>
+        </div>
+    </div>
+</div>
