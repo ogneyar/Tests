@@ -1,0 +1,3 @@
+2021/10/08 12:40:42 [error] 4880#5216: *1 CreateFile() "C:\VSCode\Nginx/html/favicon.ico" failed (2: The system cannot find the file specified), client: 127.0.0.1, server: localhost, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2021/10/08 12:41:34 [notice] 976#540: signal process started
+2021/10/08 12:42:20 [notice] 4112#2496: signal process started
