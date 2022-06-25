@@ -1,0 +1,194 @@
+%repeat-style-topCol {
+	background-color: $dark-color;
+	float: left;
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+  }
+
+#topColPhoto {
+	@extend %repeat-style-topCol;
+	margin: 0 20px 20px 0;
+}
+
+#topColPhoto img {
+	width: 100%;
+	float: left;
+}
+	
+#topColText {
+	@extend %repeat-style-topCol;
+	border-radius: 5px;
+	margin-bottom: 20px;
+}
+
+#topColText  h1 {	
+	color: white;	
+	text-shadow: 1px 1px 2px grey, 0 0 3em #ececee;
+}
+	
+@media (min-width: 1300px) {
+	#topColPhoto {
+		width: 200px;
+	}
+	#topColText {
+		width: calc(100% - 220px); /* 20px маргин райт)*/
+		height: 200px;
+	}
+	#topColText  h1 {	
+		font-size: 3em;	
+		margin-top: 76px;
+	}
+}
+	
+@media (max-width: 1299px)  and (min-width: 1000px) {
+	#topColPhoto {
+		width: 180px;
+	}
+	#topColText {
+		width: calc(100% - 200px);
+		height: 180px;
+	}
+	#topColText  h1 {	
+		font-size: 2.5em;	
+		margin-top: 71px;
+	}
+}
+	
+@media (max-width: 999px)  and (min-width: 800px) {
+	#topColPhoto {
+		width: 160px;
+	}
+	#topColText {
+		width: calc(100% - 180px);
+		height: 160px;
+	}
+	#topColText  h1 {	
+		font-size: 2em;
+		margin-top: 60px;
+	}
+}
+	
+@media (max-width: 799px) and (min-width: 700px) {
+	#topColPhoto {
+		width: 140px;
+	}
+	#topColText {
+		width: calc(100% - 160px);
+		height: 140px;
+	}
+	#topColText  h1 {	
+		font-size: 1.8em;
+		margin-top: 53px;
+	}
+}
+	
+@media (max-width: 699px) and (min-width: 600px) {
+	#topColPhoto {
+		width: 120px;
+	}
+	#topColText {
+		width: calc(100% - 140px);
+		height: 120px;
+	}
+	#topColText  h1 {	
+		font-size: 1.7em;
+		margin-top: 45px;
+	}
+}
+	
+@media (max-width: 599px) and (min-width: 540px) {
+	#topColPhoto {
+		width: 100px;
+	}
+	#topColText {
+		width: calc(100% - 120px);
+		height: 100px;
+	}
+	#topColText  h1 {	
+		font-size: 1.6em;
+		margin-top: 40px;
+	}
+}
+	
+@media (max-width: 539px) and (min-width: 490px) {
+	#topColPhoto {
+		width: 100px;
+	}
+	#topColText {
+		width: calc(100% - 120px);
+		height: 100px;
+	}
+	#topColText  h1 {	
+		font-size: 1.4em;
+		margin-top: 38px;
+	}
+}
+	
+@media (max-width: 489px) and (min-width: 440px) {
+	#topColPhoto {
+		width: 80px;
+	}
+	#topColText {
+		width: calc(100% - 100px);
+		height: 80px;
+	}
+	#topColText  h1 {	
+		font-size: 1.3em;
+		margin-top: 30px;
+	}
+}
+	
+@media (max-width: 439px) and (min-width: 390px) {
+	#topColPhoto {
+		width: 70px;
+	}
+	#topColText {
+		width: calc(100% - 90px);
+		height: 70px;
+	}
+	#topColText  h1 {	
+		font-size: 1.1em;
+		margin-top: 25px;
+	}
+}
+	
+@media (max-width: 389px) and (min-width: 340px) {
+	#topColPhoto {
+		width: 60px;
+	}
+	#topColText {
+		width: calc(100% - 80px);
+		height: 60px;
+	}
+	#topColText  h1 {	
+		font-size: 1em;
+		margin-top: 22px;
+	}
+}
+	
+@media (max-width: 339px) and (min-width: 300px) {
+	#topColPhoto {
+		width: 50px;
+	}
+	#topColText {
+		width: calc(100% - 70px);
+		height: 50px;
+	}
+	#topColText  h1 {	
+		font-size: 0.8em;
+		margin-top: 20px;
+	}
+}
+	
+@media (max-width: 299px) {
+	#topColPhoto {
+		width: 45px;
+	}
+	#topColText {
+		width: calc(100% - 65px);
+		height: 45px;
+	}
+	#topColText  h1 {	
+		font-size: 0.6em;
+		margin-top: 18px;
+	}
+}	

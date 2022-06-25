@@ -1,0 +1,31 @@
+footer {
+	width: 98%;
+	float: left;
+	padding: 0.8% 1%;
+	margin-top: 20px;
+	background-color: $dark-color;
+}
+
+footer div#rights {
+	float: left;
+	color: white;
+	width: 55%;
+	margin-left: 5%;
+	line-height: 35px;
+}
+
+footer div#social {
+	float: right;
+	width: 35%;
+	margin-right: 5%;
+}
+
+footer #social a {
+	width: 35px;
+	float: right;
+}
+
+footer div#social img {
+	margin-right: 2%;
+	width: 100%;
+}

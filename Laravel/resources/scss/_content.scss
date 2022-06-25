@@ -1,0 +1,121 @@
+#leftCol {
+	float: left;
+}
+
+@media (max-width: 699px) {
+	#leftCol {
+		width: 100%;
+		margin-bottom: 20px;
+	}	
+}	
+
+@media (min-width: 700px) {
+	#leftCol {
+		width: 69%;
+		margin-right: 3%;
+	}
+	
+}
+
+#leftCol article {	
+	float: left;
+	background-color: $dark-color;
+	color: $beige;
+	/*padding: 20px;*/
+	margin-bottom: 20px;
+	border-radius: 5px;	
+	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+#leftCol article:last-child {margin-bottom: 0}
+
+#leftCol article img {
+	width: 100%;
+	float: left;
+	margin-bottom: 10px;
+}
+
+#leftCol article a {
+	color: $yellow;
+	font-size: 1.2em;
+}
+
+#leftCol article a:hover {
+	color: #647f82
+}
+
+#warning {
+	color: red;
+	text-align: center;
+}
+
+.date, .hesh {
+	float: right;
+}
+.hesh {
+	color: white;
+}
+
+/* -------------------------------*/
+/* кнопки Далее и Назад, на главной странице*/
+/* -------------------------------*/
+
+#dalee, #nazad {
+	border-radius: 100px;
+	padding: 15px 25px;
+}
+#forms_button {
+	text-align: center;
+	padding: 20px 0;
+}
+
+
+
+
+
+
+/* ЭТО то что ниже НАДО ДОРАБОТАТЬ!!! */
+
+/*----------------------------------*/
+/* В личном кабинете заявки клиента */
+/*----------------------------------*/
+#leftCol #lk_z #zayavki a img {
+	width: 50%;
+	margin: 10px;
+}
+#leftCol #lk_z #zayavki h4 {
+	font-family: Times New Roman, sans-serif;
+	color: rgb(172,172,183); 
+}
+#leftCol #lk_z #zayavki {
+	margin-bottom: 0px;
+	padding-bottom: 0px;
+}
+#leftCol #lk_z {
+	padding-bottom: 0px;
+}
+
+@media (min-width: 800px){
+#leftCol #lk_z #zayavki h4 {
+	font-size: 1em;	
+}}
+@media (max-width: 799px) and (min-width: 640px){
+#leftCol #lk_z #zayavki h4 {
+	font-size: 0.9em;	
+}}
+@media (max-width: 639px) and (min-width: 350px){
+#leftCol #lk_z #zayavki h4 {
+	font-size: 0.8em;	
+}}
+@media (max-width: 349px) and (min-width: 311px){
+#leftCol #lk_z #zayavki h4 {
+	font-size: 0.7em;	
+}}
+@media (max-width: 310px){
+#leftCol #lk_z #zayavki h4 {
+	font-size: 0.6em;	
+}}
+/*----------------------------------*/
+
+
+/* -------------------------------*/
+

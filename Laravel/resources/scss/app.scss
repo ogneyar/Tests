@@ -1,0 +1,208 @@
+/* Тесты */ 
+
+$secondary-color: #f5f5f5;
+
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}
+
+body {
+	.hero {
+		background: $secondary-color;
+		text-align: center;
+		@include transform(rotate(10deg));
+		width: 960px / 960px * 80%;
+		margin-left: 100px;
+	}
+}
+
+%repeat-style {
+  border: 1px solid #ccc;
+  padding: 10px;
+  color: #333;
+}
+
+h6 {
+	@extend %repeat-style;
+	background: $secondary-color;
+}
+
+
+
+/* НАЧАЛО */
+
+@import 'null';
+
+@font-face {
+	font-family: 'FontAwesome';
+	src: url('/fonts/font-awesome/fontawesome-webfont.eot?v=4.7.0');
+	src: url('/fonts/font-awesome/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'), url('/fonts/font-awesome/fontawesome-webfont.woff2?v=4.7.0') format('woff2'), url('/fonts/font-awesome/fontawesome-webfont.woff?v=4.7.0') format('woff'), url('/fonts/font-awesome/fontawesome-webfont.ttf?v=4.7.0') format('truetype'), url('/fonts/font-awesome/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$font-stack: 'Nunito', sans-serif;
+
+/* Цвета */
+$main-color: rgb(172,172,183);
+$dark-color: rgb(20,17,45);
+$yellow: rgb(255,235,59);
+$violet: rgb(76,0,164);
+$beige: rgb(230,230,230);
+
+@mixin transition($property) {
+	-webkit-transition: $property;
+	-moz-transition: $property;
+	-o-transition: $property;
+	-ms-transition: $property;
+	transition: $property;
+}
+@mixin select($property) {
+	-webkit-touch-callout: $property;
+    -webkit-user-select: $property;
+    -khtml-user-select: $property;
+    -moz-user-select: $property;
+    -ms-user-select: $property;
+    user-select: $property;
+}
+@mixin display($property) {
+	-webkit-display: $property;
+	display: $property;
+}
+@mixin direction($property) {
+	-webkit-flex-direction: $property;
+	flex-direction: $property;
+}
+@mixin hyphens($property) {
+	-webkit-hyphens: $property; 
+	-moz-hyphens: $property; 
+	-ms-hyphens: $property;
+	hyphens: $property; 
+}
+
+a, *:hover {
+	@include transition(all 0.6s ease);
+}
+h1, h2, h3, h4, h5 {
+	width: 90%;
+	margin: 2% 5%;
+	text-align: center;	
+}
+p {		
+	width: 90%;
+	margin: 2% 5%;
+	float: left;
+	font-size: 1.2em;
+}
+textarea {
+	padding: 5px;
+}
+label {
+	font-size: 1.2em;
+}
+
+article {
+	width: 100%;
+	/*text-align: center;*/
+}
+
+.b_blue {
+	color: blue;
+}
+.b_green {
+	color: green;
+}
+.b_red {
+	color: red;
+}
+.button {
+	padding: 3px 10px 3px 10px;
+	background-color: rgb(74, 13, 173); 
+	color: white;
+	border: 2px solid rgb(43, 11, 93);
+}
+.button:hover {
+	background-color: rgb(101, 23, 228);
+	cursor: pointer;
+}
+
+body {
+	width: 100%;
+	min-height: 100vh;	
+	font-family: $font-stack;
+	background-color: $main-color; 	
+	@include display(flex);
+	@include direction(column);	
+	/* Перенос длинного текста */
+	@include hyphens(auto);	
+	word-wrap: break-word;
+	/* ----------------------- */
+}
+
+#wrapper {	
+	flex-grow: 1;	
+}
+
+@media (max-width: 1299px) {
+	#wrapper {
+		width: 86%;	
+		margin-left: 7%;		
+	}
+}
+@media (min-width: 1300px) {
+	#wrapper {
+		width: 70%;
+		margin-left: 15%;		
+	}
+}
+
+
+/* -------------------------------
+		Выделение текста
+----------------------------------*/
+::selection {background: #6accd7; color: #fff;}
+::-moz-selection {background: #6accd7; color: #fff}
+
+
+/* -------------------------------
+		Шапка сайта
+----------------------------------*/
+@import 'header';
+
+
+/* -------------------------------
+			Меню
+----------------------------------*/
+@import 'menu';
+
+
+#slideMenu {
+	height: 20px;
+	@include select(none);
+}
+
+	
+/* --------------------------------
+		Верхняя часть контента
+-----------------------------------*/
+@import 'topside';
+
+
+/* -------------------------------
+		Левая часть сайта
+----------------------------------*/
+@import 'content';
+
+
+/* -------------------------------
+		Правая часть сайта
+----------------------------------*/
+@import 'aside';
+
+
+/* -------------------------------
+		Футер сайта
+----------------------------------*/
+@import 'footer';
