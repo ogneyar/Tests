@@ -1,0 +1,14 @@
+{
+  "name": "node-js-file-upload",
+  "version": "1.0.1",
+  "description": "tests",
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "keywords": [],
+  "author": "Ogneyar",
+  "repository": "https://github.com/ogneyar/NodeJsFileUpload",
+  "license": "ISC",
+  "dependencies": {}
+}

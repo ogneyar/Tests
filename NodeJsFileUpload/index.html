@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+		<title>Загрузка файла на сервер</title>
+		<style>
+			.wrapper{ text-align: center; margin:2em; }
+			.button{ text-decoration: none; background:#666; padding:.3em 1em; border-radius: .3em; color:#fff; }
+			#ajax-reply{ margin-top:2em; }
+		</style>
+	</head>
+<body>
+	<div class="wrapper">
+		<input type="file" id="fileInput" multiple="multiple" accept=".txt,image/*">
+		<a href="#" class="upload_files button" onclick="onClick()">Загрузить файлы</a>
+		<div id="ajax-reply"></div>
+	</div>
+
+<script>
+async function onClick(){
+	let fileInput = document.getElementById("fileInput")
+	// let url = "submit.php"
+	let url = "server"
+
+	// const xhr = new XMLHttpRequest()
+	// xhr.open('POST', url, false)
+	// xhr.send(fileInput.files[0])
+	// if (xhr.status === 200 || xhr.status === 201) {
+	// 	alert(xhr.responseText)
+	// }else {
+	// 	alert(xhr.status)
+	// }
+	// return null
+
+	var data = new FormData()	
+	data.append( "temp", true )
+	data.append( "test", true )
+	for(let i=0; i < fileInput.files.length; i++) {
+		data.append( "file" + i + 1, fileInput.files[i] )
+	}
+	let options = {
+		method: "POST",
+		body: data
+	}
+	let response = await fetch(url, options)
+
+	if (response.ok) {
+	
+		let json = await response.json()
+		let files_path = json?.files
+		let html = ''
+		for(let i=0; i < files_path.length; i++) {
+			html += '<a href="' + files_path[i] + '" target="_blank">' + files_path[i] + '</a><br>'
+		}
+		let div = document.createElement('div')
+		div.innerHTML = html
+		document.getElementById("ajax-reply").append( div )
+		
+	}else {
+		alert("Ошибка HTTP: " + response.status);
+	}
+}
+</script>
+
+</body>
+</html>
+
+
+
+
