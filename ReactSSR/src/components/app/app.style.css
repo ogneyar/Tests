@@ -1,0 +1,21 @@
+.ui-app {
+    padding: 20px;
+    font-family: sans-serif;
+}
+.ui-app__navigation {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.ui-app__navigation__link {
+    flex: 0 0 auto;
+    margin-right: 20px;
+    font-size: 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #000;
+}
+.ui-app__navigation__link--active {
+    color: #673AB7;
+    font-weight: bold;
+}
