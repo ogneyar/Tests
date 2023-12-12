@@ -1,5 +1,9 @@
+
 import React from 'react'
+
 import './Main.css'
+import Header from '../../components/Header'
+
 
 const Main = () => {
     // eslint-disable-next-line
@@ -12,6 +16,8 @@ const Main = () => {
     }
 
     return (
+        <>
+        <Header />
         <div id="Main">
             <a href="/" onClick={e => ChangeColor(e)}>
                 Изменить цвет
@@ -20,6 +26,7 @@ const Main = () => {
                 This main Tutorial page
             </h1>
         </div>
+        </>
     )
 }
 

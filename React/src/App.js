@@ -1,23 +1,42 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
-import './App.css';
-import { Home } from './pages/Home';
-import Tutorial from './pages/tutorials/Tutorial';
+
+import React from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+
+import { Home } from './pages/Home'
+import Tutorial from './pages/tutorials/Tutorial'
+import Main from './pages/tutorials/Main'
+import TransformOnScroll from './pages/tutorials/TransformOnScroll'
+
+import './App.css'
+
+
+const router = createBrowserRouter([
+    {
+      path: "/",
+      element: <Home />,
+    },
+    {
+      path: "/home",
+      element: <Home />,
+    },
+    {
+      path: "/tutorials",
+      element: <Tutorial />,
+    },
+    {
+      path: "/tutorials/main",
+      element: <Main />,
+    },
+    {
+      path: "/tutorials/transformOnScroll",
+      element: <TransformOnScroll />,
+    },
+  ])
 
 
 const App = () => {
-  return (
-    <BrowserRouter>
-        
-        <Switch>
-          <Route component={ Home } path="/" exact />
-          <Route component={ Tutorial } path="/tutorials" />
-          <Redirect to="/" />
-        </Switch>
-    
-    </BrowserRouter> 
-  )
+  return ( <RouterProvider router={router} /> )
 }
 
 
-export default App;
+export default App

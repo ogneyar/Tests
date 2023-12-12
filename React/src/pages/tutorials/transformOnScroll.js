@@ -1,7 +1,8 @@
 import React from 'react'
-import './transformOnScroll.css'
+import './TransformOnScroll.css'
+import Header from '../../components/Header'
 
-const transformOnScroll = () => {
+const TransformOnScroll = () => {
     
     window.addEventListener("scroll", () => {
         const SkewedOne = document.querySelector('.SkewedOne')
@@ -14,6 +15,7 @@ const transformOnScroll = () => {
 
     return (
     <div id="transformOnScroll">
+        <Header />
         <section className="bg">
             <h2>Крути</h2>
             <span className="SkewedOne"></span>
@@ -26,4 +28,4 @@ const transformOnScroll = () => {
     </div>
 )}
 
-export default transformOnScroll
+export default TransformOnScroll
