@@ -9,6 +9,6 @@ npm i -D @babel/plugin-transform-arrow-functions@^7.12.1 @babel/plugin-transform
 +
 npm i -D @babel/preset-env@^7.12.7 @babel/preset-react@^7.12.7 @babel/register@^7.12.1 @babel/runtime@^7.12.5 babel-loader@^8.2.2
 +
-npm i react-router-dom@^5.2.0 
+npm i -D @babel/plugin-proposal-private-property-in-object ignore-styles@^5.0.1
 +
-npm i -D ignore-styles@^5.0.1
+npm i react-router-dom@^5.2.0
