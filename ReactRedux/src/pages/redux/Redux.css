@@ -1,0 +1,32 @@
+
+.Redux {
+    color: green;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.Redux header {
+    margin: 50px;
+    font-size: 2.5rem;
+}
+
+.Redux-box {
+    text-align: center;
+    padding: 100px 0;
+}
+
+.Redux-box button {
+    padding: 10px 20px;
+    color: red;
+}
+
+.Redux-box-cash {
+    font-size: 2.5rem;
+    color: blueviolet;
+}
+  
+.Redux-box-customer {
+    cursor: pointer;
+    margin-bottom: 10px;
+}

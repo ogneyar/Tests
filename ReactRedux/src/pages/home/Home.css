@@ -28,16 +28,6 @@
     color: white;
 }
 
-.Home-box button {
-    padding: 10px 20px;
-    color: red;
-}
-
-.Home-box-cash {
-    font-size: 2.5rem;
-    color: green;
-}
-  
 @keyframes Home-logo-spin {
     0% {
         transform: rotate(0deg);
