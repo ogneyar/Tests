@@ -6,6 +6,7 @@ import Header from '../../components/Header'
 import { addCustomerAction, removeCustomerAction } from '../../store/customerReducer'
 import { addCashAction, getCashAction } from '../../store/cashReducer'
 import './Redux.css'
+// import { fetchCustomers } from '../../asyncActions/customers'
 
 
 const Redux = () => {
@@ -49,6 +50,9 @@ const Redux = () => {
                 <br />
                 <button onClick={() => addCustomer(prompt())}>Добавить клиента</button>
                 {/* <button onClick={() => getCash()}>Удалить клиента</button> */}
+                {/* <br />
+                <br />
+                <button onClick={() => fetchCustomers()}>Получить клиентов из базы</button> */}
             </div>
             {customers.length > 0 
             ?

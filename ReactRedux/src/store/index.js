@@ -3,10 +3,19 @@ import { configureStore } from '@reduxjs/toolkit'
 
 import cashReduser from './cashReducer'
 import customerReducer from './customerReducer'
+// import { thunk } from 'redux-thunk'
 
-export const store = configureStore({
-    reducer: {
-        cash: cashReduser,
-        customers: customerReducer
+
+// const middleware = [
+//     thunk,
+// ]
+
+export const store = configureStore(
+    {
+        reducer: {
+            cash: cashReduser,
+            customers: customerReducer
+        },
+        // middleware
     },
-})
+)
